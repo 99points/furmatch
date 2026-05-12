@@ -4,8 +4,6 @@ import PetProfileForm from './components/PetProfileForm';
 import MealPlanView from './components/MealPlanView';
 import HealthCard from './components/HealthCard';
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-
 const SCREENS = { FORM: 'form', PLAN: 'plan', CARD: 'card' };
 
 export default function App() {
@@ -20,7 +18,7 @@ export default function App() {
     setError(null);
     setPet(petData);
     try {
-      const res = await fetch(`${API_BASE}/meal-plan/generate`, {
+      const res = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(petData),
